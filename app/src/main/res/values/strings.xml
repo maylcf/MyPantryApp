@@ -10,5 +10,7 @@
     <string name="btn_create_acc">Create Account</string>
     <string name="btn_login_google">Login With Google+</string>
     <string name="btn_login_facebook">Login With Facebook</string>
+    <string name="sign_up_text">New here? Sign Up</string>
+
 
 </resources>
