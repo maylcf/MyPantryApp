@@ -4,9 +4,10 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.Editable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -16,7 +17,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 
-import com.mayarafelix.mypantry.CategoryActivity;
 import com.mayarafelix.mypantry.R;
 import com.mayarafelix.mypantry.adapter.CategoryAdapter;
 import com.mayarafelix.mypantry.model.Category;
@@ -28,6 +28,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+
+import static android.widget.LinearLayout.VERTICAL;
 
 public class CategoryFragment extends Fragment
 {
@@ -51,8 +53,12 @@ public class CategoryFragment extends Fragment
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setHasFixedSize(true); // rows have the same size
         recyclerView.setAdapter(adapter);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setLayoutManager(layoutManager);
+        DividerItemDecoration decoration = new DividerItemDecoration(getActivity(), VERTICAL);
+        recyclerView.addItemDecoration(decoration);
 
+        // Download categories
         String dataUrl = UrlManager.categoriesURL;
         categoriesAsyncTask = new CategoriesAsyncTask(CategoryFragment.this);
         categoriesAsyncTask.execute(dataUrl);
@@ -77,33 +83,40 @@ public class CategoryFragment extends Fragment
 
         if (id == R.id.action_add)
         {
-            AlertDialog.Builder alert = new AlertDialog.Builder(getActivity());
+            AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getActivity());
 
-            final EditText edittext = new EditText(getActivity());
-            alert.setMessage("Enter Your Message");
-            alert.setTitle("Enter Your Title");
-            alert.setView(edittext, (int)(19dpi), (int)(5*dpi), (int)(14*dpi), (int)(5*dpi) );
+            // Set custom layout
+            LayoutInflater inflater = this.getLayoutInflater();
+            View dialogView = inflater.inflate(R.layout.dialog_new_category, null);
+            dialogBuilder.setView(dialogView);
 
-            alert.setPositiveButton("Yes Option", new DialogInterface.OnClickListener() {
+            // Get view elements
+            final EditText editText = (EditText) dialogView.findViewById(R.id.dialogCategoryName);
+
+            // Set confirm action
+            dialogBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int id) {
+                    Log.w("May", "Text: " + editText.getText().toString());
+                }
+            });
+
+            // set cancel action
+            dialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int whichButton) {
-                    //What ever you want to do with the value
-                    Editable YouEditTextValue = edittext.getText();
-                    //OR
-                    String c = edittext.getText().toString();
-                    Log.w("May", c);
+                    dialog.dismiss();
                 }
             });
 
-            alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int whichButton)
-                {
-                }
-            });
+            // Create Dialog
+            AlertDialog alertDialog = dialogBuilder.create();
+            dialogBuilder.create();
+            alertDialog.show();
 
-            alert.show();
+            return true;
         }
 
-        return super.onOptionsItemSelected(item);
+        return false;
     }
 
     public void populateCategories(JSONArray jsonArray)
