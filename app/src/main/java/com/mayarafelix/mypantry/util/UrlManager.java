@@ -8,4 +8,5 @@ public class UrlManager
 {
     public static String baseURL = "https://my-pantry-api.glitch.me/api";
     public static String categoriesURL = baseURL + "/category";
+    public static String itemsUrl = baseURL + "/item/full";
 }

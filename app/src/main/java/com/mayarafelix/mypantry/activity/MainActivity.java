@@ -17,6 +17,7 @@ import android.view.MenuItem;
 
 import com.mayarafelix.mypantry.R;
 import com.mayarafelix.mypantry.fragment.CategoryFragment;
+import com.mayarafelix.mypantry.fragment.ItemFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -104,7 +105,7 @@ public class MainActivity extends AppCompatActivity
         }
         else if (id == R.id.nav_items)
         {
-            // items
+            fragmentClass = ItemFragment.class;
         }
 
         try {

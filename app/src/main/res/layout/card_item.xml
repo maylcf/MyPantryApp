@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    android:layout_marginBottom="1dp"
+    android:padding="8dp">
+
+    <ImageView
+        android:id="@+id/cardItemImage"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/ic_menu_category" />
+
+    <TextView
+        android:id="@+id/cardItemName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/cardItemImage"
+        android:layout_toEndOf="@+id/cardItemImage"
+        android:text="Item Name"
+        android:layout_marginStart="8dp"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/cardItemCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/cardItemImage"
+        android:layout_alignStart="@+id/cardItemName"
+        android:text="Category"
+        android:textSize="14sp" />
+
+</RelativeLayout>

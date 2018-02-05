@@ -43,13 +43,16 @@ public class CategoryFragment extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         View view = inflater.inflate(R.layout.fragment_category, container, false);
+        getActivity().setTitle("Category");
         setHasOptionsMenu(true);
 
+        // Get View Elements
         categoriesArrayList = new ArrayList<>();
         adapter = new CategoryAdapter(categoriesArrayList);
         recyclerView = (RecyclerView) view.findViewById(R.id.categoryList);
         layoutManager = new LinearLayoutManager(getActivity());
 
+        // Recycler View
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setHasFixedSize(true); // rows have the same size
         recyclerView.setAdapter(adapter);
@@ -62,8 +65,6 @@ public class CategoryFragment extends Fragment
         String dataUrl = UrlManager.categoriesURL;
         categoriesAsyncTask = new CategoriesAsyncTask(CategoryFragment.this);
         categoriesAsyncTask.execute(dataUrl);
-
-        getActivity().setTitle("Category");
 
         return view;
     }
