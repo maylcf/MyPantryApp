@@ -10,13 +10,13 @@
     android:paddingLeft="@dimen/login_horizontal_margin"
     android:paddingRight="@dimen/login_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.mayarafelix.mypantry.LoginActivity">
+    tools:context="com.mayarafelix.mypantry.activity.LoginActivity">
 
     <EditText
         android:id="@+id/actLoginEdtEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="128dp"
+        android:layout_marginTop="96dp"
         android:hint="@string/hint_email"
         android:inputType="textEmailSubject"
         android:drawableStart="@drawable/ic_email_24dp"
@@ -33,7 +33,7 @@
         android:drawablePadding="8dp"/>
 
     <Button
-        android:id="@+id/actLoginBtnLogin"
+        android:id="@+id/actLoginBtnSignIn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/btn_login"/>
@@ -66,64 +66,64 @@
             android:layout_weight="2" />
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/actLoginBtnLoginGoogle"
-            android:layout_width="1dp"
-            android:layout_weight="1"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp"
-            android:drawablePadding="10dp"
-            android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_google"
-            android:text="Google"
-            android:textColor="@android:color/white"
-            android:background="@color/colorGoogle"
-            android:layout_marginEnd="8dp"/>
-
-        <Button
-            android:id="@+id/actLoginBtnLoginFacebook"
-            android:layout_width="1dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp"
-            android:drawablePadding="10dp"
-            android:background="@color/colorFacebook"
-            android:textColor="@android:color/white"
-            android:text="Facebook"
-            android:drawableStart="@drawable/ic_facebook"/>
-
-    </LinearLayout>
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="horizontal">-->
 
         <!--<Button-->
             <!--android:id="@+id/actLoginBtnLoginGoogle"-->
-            <!--android:layout_width="match_parent"-->
+            <!--android:layout_width="1dp"-->
+            <!--android:layout_weight="1"-->
             <!--android:paddingStart="20dp"-->
             <!--android:paddingEnd="20dp"-->
             <!--android:drawablePadding="10dp"-->
             <!--android:layout_height="wrap_content"-->
             <!--android:drawableStart="@drawable/ic_google"-->
-            <!--android:text="@string/btn_login_google"-->
+            <!--android:text="Google"-->
             <!--android:textColor="@android:color/white"-->
             <!--android:background="@color/colorGoogle"-->
-            <!--android:layout_marginBottom="8dp"/>-->
+            <!--android:layout_marginEnd="8dp"/>-->
 
         <!--<Button-->
             <!--android:id="@+id/actLoginBtnLoginFacebook"-->
-            <!--android:layout_width="match_parent"-->
+            <!--android:layout_width="1dp"-->
             <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="1"-->
             <!--android:paddingStart="20dp"-->
             <!--android:paddingEnd="20dp"-->
             <!--android:drawablePadding="10dp"-->
             <!--android:background="@color/colorFacebook"-->
             <!--android:textColor="@android:color/white"-->
-            <!--android:text="@string/btn_login_facebook"-->
+            <!--android:text="Facebook"-->
             <!--android:drawableStart="@drawable/ic_facebook"/>-->
+
+    <!--</LinearLayout>-->
+
+    <Button
+        android:id="@+id/actLoginBtnLoginGoogle"
+        android:layout_width="match_parent"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:drawablePadding="10dp"
+        android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_google"
+        android:text="@string/btn_login_google"
+        android:textColor="@android:color/white"
+        android:background="@color/colorGoogle"
+        android:layout_marginBottom="8dp"/>
+
+    <Button
+        android:id="@+id/actLoginBtnLoginFacebook"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:drawablePadding="10dp"
+        android:background="@color/colorFacebook"
+        android:textColor="@android:color/white"
+        android:text="@string/btn_login_facebook"
+        android:drawableStart="@drawable/ic_facebook"/>
 
     <TextView
         android:id="@+id/actLoginTxtSignUp"
