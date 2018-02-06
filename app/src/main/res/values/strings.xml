@@ -7,6 +7,11 @@
     <string name="hint_password">Password</string>
     <string name="hint_full_name">Full Name</string>
 
+    <!-- Form Generics -->
+
+    <string name="form_save_btn">Save</string>
+    <string name="form_cancel_btn">Cancel</string>
+
     <!-- Login -->
 
     <string name="login_title">Login</string>
@@ -24,6 +29,13 @@
     <string name="menu_items">Items</string>
     <string name="menu_shopping">Shopping</string>
     <string name="menu_pantry">Pantry</string>
+
+    <!-- Edit / New Item -->
+
+    <string name="frag_edit_item_title">Edit Item</string>
+    <string name="frag_new_item_title">New Item</string>
+    <string name="frag_edit_item_name_label">Item Name:</string>
+    <string name="frag_edit_item_category_label">Category:</string>
 
 
     <string name="navigation_drawer_open">Open navigation drawer</string>

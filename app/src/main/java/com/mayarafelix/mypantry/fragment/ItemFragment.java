@@ -1,16 +1,22 @@
 package com.mayarafelix.mypantry.fragment;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import com.mayarafelix.mypantry.R;
 import com.mayarafelix.mypantry.adapter.CategoryAdapter;
@@ -77,6 +83,29 @@ public class ItemFragment extends Fragment
         super.onCreateOptionsMenu(menu, inflater);
         menu.findItem(R.id.action_settings).setVisible(false);
         menu.findItem(R.id.action_add).setVisible(true);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        int id = item.getItemId();
+
+        if (id == R.id.action_add)
+        {
+            try
+            {
+                Class fragmentClass = ItemEditFragment.class;
+                Fragment fragment = (Fragment) fragmentClass.newInstance();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                fragmentManager.beginTransaction().replace(R.id.fragmentContent, fragment).commit();
+                return true;
+            }
+            catch (Exception e)
+            {
+               return false;
+            }
+        }
+        return false;
     }
 
     public void populateItems(JSONArray jsonArray)

@@ -1,8 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="16dp">
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/fragEditItemNameLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/frag_edit_item_name_label"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"/>
+
+    <EditText
+        android:id="@+id/fragEditItemName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/fragEditItemNameLabel"/>
+
+    <TextView
+        android:id="@+id/fragEditItemCategoryLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/frag_edit_item_category_label"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_below="@id/fragEditItemName"/>
+
+    <EditText
+        android:id="@+id/fragEditItemCategoryName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="-- Select Category --"
+        android:gravity="center_vertical"
+        android:layout_alignParentStart="true"
+        android:layout_below="@id/fragEditItemCategoryLabel"
+        android:layout_toStartOf="@id/fragEditItemCategoryBtn"
+        android:layout_alignTop="@id/fragEditItemCategoryBtn"
+        android:layout_alignBottom="@id/fragEditItemCategoryBtn"/>
+
+    <ImageButton
+        android:id="@+id/fragEditItemCategoryBtn"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@drawable/ic_arrow_drop_down"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/fragEditItemCategoryLabel" />
+
+    <Button
+        android:id="@+id/fragEditItemSaveBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_below="@id/fragEditItemCategoryName"
+        android:text="@string/form_save_btn"/>
+
+    <Button
+        android:id="@+id/fragEditItemCancelBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_below="@id/fragEditItemSaveBtn"
+        android:text="@string/form_cancel_btn"/>
+
+</RelativeLayout>
