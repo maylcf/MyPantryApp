@@ -59,19 +59,21 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    //==============================================
+    //== Option Menu
+    //==============================================
+
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
         getMenuInflater().inflate(R.menu.main, menu);
         menu.findItem(R.id.action_add).setVisible(false);
         return true;
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
@@ -81,6 +83,10 @@ public class MainActivity extends AppCompatActivity
 
         return super.onOptionsItemSelected(item);
     }
+
+    //==============================================
+    //== Navigation Menu - Side Menu
+    //==============================================
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -108,11 +114,15 @@ public class MainActivity extends AppCompatActivity
             fragmentClass = ItemFragment.class;
         }
 
-        try {
+        try
+        {
             fragment = (Fragment) fragmentClass.newInstance();
-        } catch (Exception e) {
+        }
+        catch (Exception e)
+        {
             e.printStackTrace();
         }
+
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.fragmentContent, fragment).commit();
 

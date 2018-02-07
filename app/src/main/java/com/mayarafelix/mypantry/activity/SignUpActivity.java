@@ -1,7 +1,9 @@
-package com.mayarafelix.mypantry;
+package com.mayarafelix.mypantry.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.mayarafelix.mypantry.R;
 
 public class SignUpActivity extends AppCompatActivity {
 

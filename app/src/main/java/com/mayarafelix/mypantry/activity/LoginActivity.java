@@ -8,7 +8,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.mayarafelix.mypantry.R;
-import com.mayarafelix.mypantry.SignUpActivity;
 
 public class LoginActivity extends AppCompatActivity
 {

@@ -10,7 +10,7 @@
     android:paddingRight="@dimen/login_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
-    tools:context="com.mayarafelix.mypantry.SignUpActivity">
+    tools:context="com.mayarafelix.mypantry.activity.SignUpActivity">
 
     <EditText
         android:id="@+id/actSignUpName"

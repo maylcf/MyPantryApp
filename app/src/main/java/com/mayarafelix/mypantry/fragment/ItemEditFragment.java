@@ -2,6 +2,7 @@ package com.mayarafelix.mypantry.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -9,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -92,13 +94,46 @@ public class ItemEditFragment extends Fragment
         return view;
     }
 
+    //==============================================
+    //== Option Menu
+    //==============================================
+
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater)
     {
         super.onCreateOptionsMenu(menu, inflater);
+
         menu.findItem(R.id.action_settings).setVisible(false);
-        menu.findItem(R.id.action_add).setVisible(true);
+        menu.findItem(R.id.action_add).setVisible(false);
+        menu.findItem(R.id.action_save).setVisible(true);
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        int id = item.getItemId();
+
+        if (id == R.id.action_add)
+        {
+            try
+            {
+                Class fragmentClass = ItemEditFragment.class;
+                Fragment fragment = (Fragment) fragmentClass.newInstance();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                fragmentManager.beginTransaction().replace(R.id.fragmentContent, fragment).commit();
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
+        return false;
+    }
+
+    //==============================================
+    //== Download Information
+    //==============================================
 
     public void populateCategories()
     {
@@ -111,5 +146,14 @@ public class ItemEditFragment extends Fragment
         categories.add(category2);
         categories.add(category3);
         categories.add(category4);
+    }
+
+    //==============================================
+    //== Other Functions
+    //==============================================
+
+    private void onSaveMenuSelected()
+    {
+
     }
 }

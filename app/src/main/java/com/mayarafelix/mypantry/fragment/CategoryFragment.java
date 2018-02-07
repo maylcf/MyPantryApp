@@ -3,6 +3,7 @@ package com.mayarafelix.mypantry.fragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
@@ -69,11 +70,16 @@ public class CategoryFragment extends Fragment
         return view;
     }
 
+    //==============================================
+    //== Option Menu
+    //==============================================
+
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater)
     {
         super.onCreateOptionsMenu(menu, inflater);
         menu.findItem(R.id.action_settings).setVisible(false);
+        menu.findItem(R.id.action_save).setVisible(false);
         menu.findItem(R.id.action_add).setVisible(true);
     }
 
@@ -84,41 +90,15 @@ public class CategoryFragment extends Fragment
 
         if (id == R.id.action_add)
         {
-            AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getActivity());
-
-            // Set custom layout
-            LayoutInflater inflater = this.getLayoutInflater();
-            View dialogView = inflater.inflate(R.layout.dialog_new_category, null);
-            dialogBuilder.setView(dialogView);
-
-            // Get view elements
-            final EditText editText = (EditText) dialogView.findViewById(R.id.dialogCategoryName);
-
-            // Set confirm action
-            dialogBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int id) {
-                    Log.w("May", "Text: " + editText.getText().toString());
-                }
-            });
-
-            // set cancel action
-            dialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int whichButton) {
-                    dialog.dismiss();
-                }
-            });
-
-            // Create Dialog
-            AlertDialog alertDialog = dialogBuilder.create();
-            dialogBuilder.create();
-            alertDialog.show();
-
-            return true;
+            onAddMenuSelected();
         }
 
         return false;
     }
+
+    //==============================================
+    //== Download Information
+    //==============================================
 
     public void populateCategories(JSONArray jsonArray)
     {
@@ -142,5 +122,44 @@ public class CategoryFragment extends Fragment
 
             adapter.notifyDataSetChanged();
         }
+    }
+
+    //==============================================
+    //== Other Functions
+    //==============================================
+
+    private Boolean onAddMenuSelected()
+    {
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getActivity());
+
+        // Set custom layout
+        LayoutInflater inflater = this.getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.dialog_new_category, null);
+        dialogBuilder.setView(dialogView);
+
+        // Get view elements
+        final EditText editText = (EditText) dialogView.findViewById(R.id.dialogCategoryName);
+
+        // Set confirm action
+        dialogBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                Log.w("May", "Text: " + editText.getText().toString());
+            }
+        });
+
+        // set cancel action
+        dialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int whichButton) {
+                dialog.dismiss();
+            }
+        });
+
+        // Create Dialog
+        AlertDialog alertDialog = dialogBuilder.create();
+        dialogBuilder.create();
+        alertDialog.show();
+
+        return true;
     }
 }

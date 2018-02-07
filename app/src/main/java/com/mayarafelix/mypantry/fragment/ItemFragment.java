@@ -77,11 +77,17 @@ public class ItemFragment extends Fragment
         return view;
     }
 
+    //==============================================
+    //== Option Menu
+    //==============================================
+
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater)
     {
         super.onCreateOptionsMenu(menu, inflater);
+
         menu.findItem(R.id.action_settings).setVisible(false);
+        menu.findItem(R.id.action_save).setVisible(false);
         menu.findItem(R.id.action_add).setVisible(true);
     }
 
@@ -92,21 +98,14 @@ public class ItemFragment extends Fragment
 
         if (id == R.id.action_add)
         {
-            try
-            {
-                Class fragmentClass = ItemEditFragment.class;
-                Fragment fragment = (Fragment) fragmentClass.newInstance();
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                fragmentManager.beginTransaction().replace(R.id.fragmentContent, fragment).commit();
-                return true;
-            }
-            catch (Exception e)
-            {
-               return false;
-            }
+            onAddMenuSelected();
         }
         return false;
     }
+
+    //==============================================
+    //== Download Information
+    //==============================================
 
     public void populateItems(JSONArray jsonArray)
     {
@@ -130,5 +129,43 @@ public class ItemFragment extends Fragment
 
             adapter.notifyDataSetChanged();
         }
+    }
+
+    //==============================================
+    //== Other Functions
+    //==============================================
+
+    private Boolean onAddMenuSelected()
+    {
+        try
+        {
+            Class fragmentClass = ItemEditFragment.class;
+            Fragment fragment = (Fragment) fragmentClass.newInstance();
+
+            this.getFragmentManager().beginTransaction()
+                    .replace(R.id.container, fragment)
+                    .addToBackStack(null)
+                    .commit();
+
+            return true;
+        }
+        catch ( Exception e)
+        {
+            return false;
+        }
+
+
+//        try
+//        {
+//            Class fragmentClass = ItemEditFragment.class;
+//            Fragment fragment = (Fragment) fragmentClass.newInstance();
+//            FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+//            fragmentManager.beginTransaction().replace(R.id.fragmentContent, fragment).commit();
+//            return true;
+//        }
+//        catch (Exception e)
+//        {
+//            return false;
+//        }
     }
 }
